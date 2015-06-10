@@ -91,19 +91,19 @@ function render(component, setState) {
       <div class="col-xs-10 middle-xs">
         <h2>Klouds Account</h2>
       </div>
-      <div class="row middle-xs">
-        <form class="offset-xs-2 login item">
+      <div class="col-xs-offset-2 col-xs-10 middle-xs">
+        <form class="login item">
           <div>
-            <label>Email { state.virgin ? "" : (state.errors.email ? "<\/3" : "<3") }</label>
+            <h4>Email { state.virgin ? "" : (state.errors.email ? "<\/3" : "<3") }</h4>
           	<input onInput={ validate } type="email" placeholder="Email" />
     			</div>
           <div>
-            <label>Password { state.virgin ? "" : (state.errors.password ? "<\/3" : "<3") }</label>
+            <h4>Password { state.virgin ? "" : (state.errors.password ? "<\/3" : "<3") }</h4>
             <input onInput={ validate } type="password" placeholder="Password" /> 
           </div>
           <div>
-            <button type="button" disabled={ !state.valid } onClick={ onRegister } class="secondary">Register</button>
-            <button type="button" disabled={ !state.valid } onClick={ onLogin }>Login</button>
+            <button type="button" disabled={ !state.valid } onClick={ onRegister }>Register</button>
+            <button type="button" disabled={ !state.valid } onClick={ onLogin } class="primary">Login</button>
           </div>
         </form>
       </div>

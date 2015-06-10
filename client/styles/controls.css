@@ -13,7 +13,6 @@ input {
   margin-top: 0.5em;
   padding: 0.5em 1em;
   display: block;
-  width: 100%;
   line-height: 1em;
 }
 
@@ -25,12 +24,26 @@ input.expiry {
 
 button {
   box-sizing: border-box;
-  margin-bottom: 0.5em;
-  margin-top: 0.5em;
+  margin-top: 1em;
+  margin-bottom: 1em;
   line-height: 1em;
   padding: 0.5em 1em;
 }
 
+.login button:first-child {
+  margin-left: 1em;
+}
+.login button :last-child {
+  margin-right: 1em;
+}
+
 .login button {
   width: 8em;
+}
+
+.login input {
+  box-sizing: margin-box;
+  margin-left: 1.4em;
+  width: 15.2em;
+  margin-right: 1.4em;
 }

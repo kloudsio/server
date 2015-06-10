@@ -76,7 +76,7 @@ function render(c) {
 			<div class="col-xs-10 middle-xs">
 				<h2>Purchase Apps</h2>
 			</div>
-			<div class="row middle-xs">
+		    <div class="col-xs-offset-2 col-xs-10 middle-xs">
 				{state.itemsOn}
 			</div>
 		</div>
@@ -89,7 +89,7 @@ function render(c) {
 			<div class="col-xs-10 middle-xs">
 				<h2>Known Apps</h2>
 			</div>
-			<div class="row middle-xs">
+		    <div class="col-xs-offset-2 col-xs-10 middle-xs">
 		  		{state.itemsOff}
 		 	</div>
 		</div>

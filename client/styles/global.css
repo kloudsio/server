@@ -35,21 +35,37 @@ body {
 
 .row {
   color: var(--light);
-  background: var(--purple)
-  box-shadow: 0 2px 8px 3px rgba(0,0,0,0.3);
 }
-.row h2 {
-  text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.8);
+.row h2, h4 {
+  text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.7);
+}
+.num {
+  text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.8);  
+}
+
+.item {  
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.8);
+  background: var(--light);
+  color: var(--purple);
+}
+
+.item input {
+  color: var(--purple);
+}
+
+app-off {
+  background: var(--light);
+  color: var(--purple);
+  border: none;
+  opacity: 0.6;
 }
 
 input {
-  border: var(--border);
+  border: 1px solid var(--light);
   background: var(--background);
-}
-
-.login input {
   color: var(--light);
-  background: none;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.8);
+  outline-offset: 0px;
 }
 
 button {
@@ -59,20 +75,14 @@ button {
   color: var(--purple);
 }
 
+button.primary {
+  background: var(--purple);
+  color: var(--light);
+}
+
 button:disabled {
-  box-shadow: none;
   opacity: 0.8;
   pointer: none;
-}
-
-
-::placeholder {
-  opacity: .4;
-  transition: opacity 1s;
-}
-
-:focus::placeholder {
-  opacity: .2;
 }
 
 input:-webkit-autofill {
