@@ -3,8 +3,7 @@
 
 # Klouds.io
 
-Written with **io.js**. Database is **MongoDB**.
-
+Written with **io.js**, or nodejs with a bunch of --harmony flags.
 
 
 ```bash
@@ -19,9 +18,10 @@ nano run.sh
 
 ```
 
+
+
 ## Documentation
-[Client](docs/client.md)
-[Server](docs/server.md)
+
 [History](docs/history.md)
 
 ## Contact
