@@ -1,6 +1,0 @@
-{
-  "jsxPragma": "element",
-  "stage": 1,
-  "optional": ["utility.inlineEnvironmentVariables"],
-  "only": ["client/elements/*.js", "client/lib/*.js"]
-}
