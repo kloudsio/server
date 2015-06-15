@@ -9,17 +9,13 @@ Written with **io.js**. Database is **MongoDB**.
 
 ```bash
 
-# install global dependencies
-npm install -g duo sane
-
-# installs klouds.io dependencies
+# install dependencies
 make install
 
-# compiles the front-end
-make build
 
-# runs server and client. watches for changes using sane
-make develop
+# modify & run this script
+nano run.sh
+./run.sh
 
 ```
 
