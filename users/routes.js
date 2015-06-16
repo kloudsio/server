@@ -2,6 +2,7 @@ var jwt = require('koa-jwt');
 var pswd = require('pswd')();
 var Joi = require('joi');
 
+var db = require('../lib/db');
 
 module.exports.login = {
   method: 'post',
@@ -15,7 +16,7 @@ module.exports.login = {
   },
   handler: function* () {
     var params = this.request.body;
-    var user = yield this.users.findOne({
+    var user = yield db.users.findOne({
       email: params.email
     });
 
@@ -55,7 +56,7 @@ module.exports.create = {
   handler: function* () {
     var params = this.request.body;
 
-    var exists = yield this.users.findOne({
+    var exists = yield db.users.findOne({
       email: params.email
     });
     if (exists) {
@@ -67,7 +68,7 @@ module.exports.create = {
       return;
     }
     var hash = yield pswd.hash(params.password);
-    var user = yield this.users.insert({
+    var user = yield db.users.insert({
       email: params.email,
       password: hash
     });
