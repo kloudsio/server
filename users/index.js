@@ -7,7 +7,7 @@ var main = require('../lib/main');
 */
 var routes = require('./routes');
 var router = require('koa-joi-router')();
-router.route(routes.create);
+router.route(routes.register);
 router.route(routes.login);
 
 /*

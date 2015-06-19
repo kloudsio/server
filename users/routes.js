@@ -4,6 +4,16 @@ var Joi = require('joi');
 
 var db = require('../lib/db');
 
+
+function authorize(user) {
+  delete user.password;
+  return {
+    token: jwt.sign(user, process.env.JWT_KEY, { expiresInMinutes: 60 * 5 }),
+    user: user,
+  }
+}
+
+
 module.exports.login = {
   method: 'post',
   path: '/login',
@@ -15,37 +25,23 @@ module.exports.login = {
     type: 'json'
   },
   handler: function* () {
-    var params = this.request.body;
-    var user = yield db.users.findOne({
-      email: params.email
-    });
+    var email = this.request.body.email;
+    var password = this.request.body.password;
 
-    if (user) {
-      var match = yield pswd.compare(params.password, user.password);
-      if (match) {
-        var token = jwt.sign(user, process.env.JWT_KEY, {
-          expiresInMinutes: 60 * 5
-        });
-				delete user.password;
-        this.body = {
-          token: token,
-          user: user
-        };
-				return;
-      }
-    }
+    var user = yield db.users.findOne({ email: email });
+    this.assert(user, 401, 'authentication failed');
 
-    this.status = 401;
-    this.body = {
-      error: 'Wrong user or password'
-    };
-    return;
+    var valid = yield pswd.compare(password, user.password);
+    this.assert(valid, 401, 'authentication failed');
+
+    this.body = authorize(user);
+
   }
 };
 
-module.exports.create = {
+module.exports.register = {
   method: 'post',
-  path: '/',
+  path: '/register',
   validate: {
     body: {
       email: Joi.string().lowercase().email(),
@@ -54,25 +50,21 @@ module.exports.create = {
     type: 'json'
   },
   handler: function* () {
-    var params = this.request.body;
+    var email = this.request.body.email;
+    var password = this.request.body.password;
 
-    var exists = yield db.users.findOne({
-      email: params.email
-    });
-    if (exists) {
-      this.status = 403;
-      this.body = {
-        error: 'That user already exists'
-      }
-      this.log('User already exists', exists);
-      return;
-    }
-    var hash = yield pswd.hash(params.password);
+    var duplicate = yield db.users.findOne({ email: email });
+    this.assert(!duplicate, 400, 'Klouds ID already exists');
+
+    var hash = yield pswd.hash(password);
+    this.assert(hash, 500, 'Failed to hash password');
+
     var user = yield db.users.insert({
-      email: params.email,
+      email: email,
       password: hash
     });
-    delete user.password;
-    this.body = user;
+    this.assert(user, 500, 'Failed to insert new user');
+
+    this.body = authorize(user);
   }
 }
