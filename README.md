@@ -5,31 +5,22 @@
 
 Written with **io.js**, or nodejs with a bunch of --harmony flags.
 
-
+### Dockered Mongo
 ```bash
+KLOUDS_DATA=/location/for/klouds/db/data
 
-# type me
-KLOUDSDATA=/data/klouds
+mkdir -p $KLOUDS_DATA && docker pull mongo && docker run -d -p 27017:27017 -v $KLOUDS_DATA:/data/db --name klouds-mongo mongo &&echo 'Docker Mongo:' && docker ps | grep klouds-mongo
 
-# paste me
+ls $KLOUDS_DATA
+```
 
-mkdir -p $KLOUDSDATA &&\
-docker pull mongo && docker run -d \
-	-p 27017:27017 \
-	-v $KLOUDSDATA:/data/db \
-	--name klouds-mongo \
-	mongo;
+### Klouds Server Setup
+```bash
+npm install
 
-echo 'Docker Mongo:'; docker ps | grep mongo; echo 'Data Dir: Contents'; ls $KLOUDSDATA
+vim env.sh
 
-# install dependencies
-make install
-
-
-# modify & run this script
-nano run.sh
-./run.sh
-
+make start
 ```
 
 

@@ -1,11 +1,11 @@
 
 # run with environment
-IOJS := bash -c source\ env.sh\ \&\&\ iojs\ \$(read)
+NODE := iojs serve.js
 
 start:
-	@ $(IOJS) serve.js
+	@$(NODE) serve.sh
 .PHONY:start
 
 dev:
-	@ $(IOJS) serve.js
+	@ $(NODE) serve.js
 .PHONY:dev

@@ -1,3 +1,8 @@
 FROM iojs:onbuild
 
-git clone 
+RUN ASDF=/klouds/server mkdir -p $ASDF &&\
+  cd $ASDF &&\
+  git clone https://github.com/kloudsio/server $ASDF &&\
+
+WORKDIR /klouds/server
+CMD make run
