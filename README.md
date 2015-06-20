@@ -8,6 +8,20 @@ Written with **io.js**, or nodejs with a bunch of --harmony flags.
 
 ```bash
 
+# type me
+KLOUDSDATA=/data/klouds
+
+# paste me
+
+mkdir -p $KLOUDSDATA &&\
+docker pull mongo && docker run -d \
+	-p 27017:27017 \
+	-v $KLOUDSDATA:/data/db \
+	--name klouds-mongo \
+	mongo;
+
+echo 'Docker Mongo:'; docker ps | grep mongo; echo 'Data Dir: Contents'; ls $KLOUDSDATA
+
 # install dependencies
 make install
 
