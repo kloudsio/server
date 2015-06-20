@@ -8,6 +8,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "babel": "^5.5.8",
     "co": "^4.5.2",
     "co-monk": "^1.0.0",
     "es6-module-loader": "^0.17.1",
