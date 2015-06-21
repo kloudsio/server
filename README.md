@@ -9,7 +9,7 @@ Written with **io.js**, or nodejs with a bunch of --harmony flags.
 ```bash
 KLOUDS_DATA=/location/for/klouds/db/data
 
-mkdir -p $KLOUDS_DATA && docker pull mongo && docker run -d -p 27017:27017 -v $KLOUDS_DATA:/data/db --name klouds-mongo mongo &&echo 'Docker Mongo:' && docker ps | grep klouds-mongo
+mkdir -p $KLOUDS_DATA && docker pull mongo && docker run -d -p 27017:27017 -v $KLOUDS_DATA:/data/db --name mongo mongo && echo 'Docker Mongo:' && docker ps | grep klouds-mongo
 
 ls $KLOUDS_DATA
 ```

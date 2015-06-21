@@ -28,5 +28,11 @@ ADD . ./k-io
 
 EXPOSE 8080
 WORKDIR /k-io
-CMD bash -c source\ env.sh\ \&\&\ iojs\ serve.js
+CMD iojs serve.js
 
+
+ENV PORT=8080
+ENV ASSETS='/k-io/client'
+ENV MONGODB='db/klouds'
+ENV JWT_KEY=''
+ENV STRIPE_SK=''
